@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Chart Scanner - MT5 Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 SMC Chart Scanner</h1>
+            <p>Advanced Smart Money Concepts Analysis for MT5 Charts</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h3>Upload MT5 Screenshot</h3>
+                    <p>Drag and drop or click to upload</p>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                </div>
+            </section>
+
+            <!-- Image Preview and Controls -->
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <div class="image-container">
+                    <img id="previewImage" src="" alt="Chart Preview">
+                    <canvas id="annotationCanvas"></canvas>
+                </div>
+                
+                <div class="controls">
+                    <button id="analyzeBtn" class="btn btn-primary">🔍 Analyze Chart</button>
+                    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                </div>
+            </section>
+
+            <!-- Analysis Results -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <!-- Zones Detection -->
+                    <div class="result-card">
+                        <h3>📍 Support & Resistance Zones</h3>
+                        <div id="zonesResult" class="zones-list"></div>
+                    </div>
+
+                    <!-- Pattern Detection -->
+                    <div class="result-card">
+                        <h3>📊 SMC Patterns Detected</h3>
+                        <div id="patternsResult" class="patterns-list"></div>
+                    </div>
+
+                    <!-- Entry Setup -->
+                    <div class="result-card entry-setup">
+                        <h3>📈 Entry Setup</h3>
+                        <div class="entry-details">
+                            <div class="detail-row">
+                                <span class="label">Entry Price:</span>
+                                <span id="entryPrice" class="value">-</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Take Profit (TP):</span>
+                                <span id="takeProfitPrice" class="value tp-price">-</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Stop Loss (SL):</span>
+                                <span id="stopLossPrice" class="value sl-price">-</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Risk/Reward Ratio:</span>
+                                <span id="rrRatio" class="value">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Entry Reason -->
+                    <div class="result-card">
+                        <h3>💡 Entry Reason</h3>
+                        <div id="entryReason" class="entry-reason-text"></div>
+                    </div>
+
+                    <!-- Accuracy & Confidence -->
+                    <div class="result-card">
+                        <h3>🎯 Accuracy & Confidence</h3>
+                        <div class="accuracy-metrics">
+                            <div class="metric">
+                                <div class="metric-label">Pattern Confidence</div>
+                                <div class="progress-bar">
+                                    <div id="patternConfidence" class="progress-fill"></div>
+                                </div>
+                                <div class="metric-value"><span id="patternConfidenceValue">0</span>%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Zone Accuracy</div>
+                                <div class="progress-bar">
+                                    <div id="zoneAccuracy" class="progress-fill"></div>
+                                </div>
+                                <div class="metric-value"><span id="zoneAccuracyValue">0</span>%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Overall Signal Quality</div>
+                                <div class="progress-bar">
+                                    <div id="signalQuality" class="progress-fill"></div>
+                                </div>
+                                <div class="metric-value"><span id="signalQualityValue">0</span>%</div>
+                            </div>
+                        </div>
+                        <div id="accuracyNotes" class="accuracy-notes"></div>
+                    </div>
+
+                    <!-- Trade Details -->
+                    <div class="result-card trade-details">
+                        <h3>📋 Trade Summary</h3>
+                        <div id="tradeSummary" class="trade-summary-text"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing chart...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>SMC Chart Scanner v1.0 | For Educational & Analysis Purposes Only</p>
+            <p>⚠️ Not Financial Advice - Always Use Proper Risk Management</p>
+        </footer>
+    </div>
+
+    <script src="canvasTools.js"></script>
+    <script src="smcAnalyzer.js"></script>
+    <script src="imageProcessor.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
